@@ -314,6 +314,8 @@ class DownloadWorker:
             "--no-continue",
             "--no-part",
             "--no-update",
+            "--progress-template",
+            "download:__ERNI_PROGRESS__%(progress._percent_str)s",
             "--concurrent-fragments",
             "8",
             "--retries",
@@ -551,10 +553,9 @@ class DownloadWorker:
             self.on_status("Merging")
             return
 
-        if "[download]" not in line:
-            return
-
-        match = re.search(r"\[download\]\s+(\d+(?:\.\d+)?)%", line)
+        match = re.search(r"__ERNI_PROGRESS__\s*(\d+(?:\.\d+)?)%", line)
+        if not match:
+            match = re.search(r"\[download\]\s+(\d+(?:\.\d+)?)%", line)
         if match:
             self.on_status("Downloading")
             self.on_progress(float(match.group(1)))

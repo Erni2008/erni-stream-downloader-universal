@@ -1826,7 +1826,10 @@ class StreamDownloaderApp(BaseTk):
 
     def _process_events(self) -> None:
         try:
-            while True:
+            # Do not drain an unlimited stream of yt-dlp log lines in one Tk
+            # callback.  A fast download can keep the queue permanently
+            # non-empty and starve Tk's repaint cycle, leaving progress at 0%.
+            for _ in range(60):
                 event, payload = self.event_queue.get_nowait()
                 if event == "log":
                     self._append_log(str(payload))
@@ -1856,7 +1859,7 @@ class StreamDownloaderApp(BaseTk):
                     self._handle_app_update_result(payload)  # type: ignore[arg-type]
         except queue.Empty:
             pass
-        self.after(100, self._process_events)
+        self.after(35, self._process_events)
 
     def _handle_update_ytdlp_result(self, payload: tuple[bool, str]) -> None:
         success, message = payload
