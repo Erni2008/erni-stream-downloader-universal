@@ -1,0 +1,18 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+*.spec
+
+build/
+dist/
+vendor/
+*.zip
+
+.venv/
+venv/
+env/
+
+*.log
+
+/ВСЕ ДЛЯ МАКА/
+/ВСЕ ДЛЯ ВИНДЫ/
