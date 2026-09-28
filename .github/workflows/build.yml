@@ -43,6 +43,9 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install bundled media tools
+        run: brew install ffmpeg deno
+
       - name: Build app
         run: |
           chmod +x build_mac.sh

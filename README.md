@@ -1,5 +1,9 @@
 # ERNI Stream Downloader
 
+[![Build desktop apps](https://github.com/Erni2008/erni-stream-downloader-universal/actions/workflows/build.yml/badge.svg)](https://github.com/Erni2008/erni-stream-downloader-universal/actions/workflows/build.yml)
+[![Latest release](https://img.shields.io/github/v/release/Erni2008/erni-stream-downloader-universal)](https://github.com/Erni2008/erni-stream-downloader-universal/releases/latest)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Desktop-приложение для macOS и Windows, которое скачивает ваши YouTube-стримы/видео через `yt-dlp` и `ffmpeg` без ручного ввода команд в терминале.
 
 ## Скачать готовую программу
